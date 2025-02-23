@@ -1,0 +1,10 @@
+﻿.conteiner{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.conteiner a {
+  margin-bottom: 30px;
+}
