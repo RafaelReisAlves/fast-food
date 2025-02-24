@@ -1,31 +1,15 @@
-﻿import { orderModel } from "@/models/comanda";
+﻿import { command, order } from "@/models/comanda";
 import { redirect } from "next/navigation";
 
+export async function GET() {
+  const data = await command.findAll({include: {
+    model: order
+  }})
+  return Response.json(data)
+}
+
 export async function POST(req) {
-
-  // const data = orderModel.findAll()
-  // var newid
   
-  // let ids = []
-  // let id = 0
-  // if(data){
-  //   data.map(order => {
-  //     ids.push(order.id)
-  //   })
-  // }
-  // ids.sort((a,b) => {
-  //   if(a < b){
-  //     return 0
-  //   }
-  //   return -1
-  // })
-  // if(ids[0]){
-  //   id = ids[0]
-  // }
-  // newid = id
-  
-
-  let quantidadeProdutos = 0
   const formData = await req.formData()
 
   const salgado1 = formData.get('salgado 1')
@@ -46,19 +30,47 @@ export async function POST(req) {
   const bebida2 = formData.get('bebida 2')
   const bebida2Quantidade = formData.get('bebida 2 quantidade')
 
-  console.log(salgado1,salgado1Quantidade)
-  console.log(salgado2,salgado2Quantidade)
-  console.log(doce1,doce1Quantidade)
-  console.log(doce2,doce2Quantidade)
-  console.log(bebida1,bebida1Quantidade)
-  console.log(bebida2,bebida2Quantidade)
+  const newOrders = [
+    {
+      produto: salgado1,
+      quantidade: salgado1Quantidade
+    },
+    {
+      produto: salgado2,
+      quantidade: salgado2Quantidade
+    },
+    {
+      produto: doce1,
+      quantidade: doce1Quantidade
+    },
+    {
+      produto: doce2,
+      quantidade: doce2Quantidade
+    },
+    {
+      produto: bebida1,
+      quantidade: bebida1Quantidade
+    },
+    {
+      produto: bebida2,
+      quantidade: bebida2Quantidade
+    },
+  ]
 
-  // while(quantidadeProdutos > 0){
-  //   orderModel.create({
-  //     id:id
-  //   })
-  //   quantidadeProdutos--
-  // }
-  
-  redirect("/")
+  let comanda, pedido
+  command.create()
+  .then((data) =>{
+    comanda = data
+    newOrders.map(newOrder => {
+      if(newOrder.produto){
+        order.create(newOrder)
+        .then((data) => {
+          pedido = data
+          comanda.addOrder(pedido)
+        })
+      }
+    })
+  })
+
+  redirect("/menu")
 }
