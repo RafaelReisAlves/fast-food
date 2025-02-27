@@ -1,10 +1,17 @@
 ﻿.conteiner{
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: end;
+  justify-content: end;
+  align-items: center;
+  flex-direction: column;
 }
 
-.conteiner a {
-  margin-bottom: 30px;
+.conteiner div {
+  margin-bottom: 20px;
+  background-color: rgb(17, 68, 17);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 200px;
+  text-align: center;
 }

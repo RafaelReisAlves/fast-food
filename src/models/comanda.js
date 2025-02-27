@@ -1,5 +1,5 @@
 ﻿import { Sequelize } from 'sequelize';
-import sequelize from '../database/database';
+import sequelize from '../database/database.js';
 
 const order = sequelize.define('order', {
   id: {
@@ -9,7 +9,8 @@ const order = sequelize.define('order', {
     autoIncrement: true
   },
   produto: Sequelize.STRING,
-  quantidade: Sequelize.INTEGER
+  quantidade: Sequelize.INTEGER,
+  sabor: Sequelize.STRING
 });
 
 const command = sequelize.define('command', {
@@ -21,7 +22,9 @@ const command = sequelize.define('command', {
   }
 });
 
-command.hasMany(order)
+command.hasMany(order, {
+  onDelete:"CASCADE"
+})
 order.belongsTo(command)
 
 

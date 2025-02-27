@@ -10,8 +10,12 @@ export default function Avarage(){
     fetch("/api")
     .then(res => {
       res.json().then(data => {
-        setdata(data)
         console.log(data)
+        if(data > 0){
+          setdata(data)
+        }else{
+          setdata(0)
+        }
       })
     })
     .catch(() => {

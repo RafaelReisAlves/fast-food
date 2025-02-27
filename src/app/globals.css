@@ -1,15 +1,19 @@
-html,
-body {
+html, body {
   max-width: 100vw;
+  height: 100vh;
   overflow-x: hidden;
 }
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-a {
+a, button {
   color: inherit;
   text-decoration: none;
+  background-color: inherit;
+  border: none;
+  cursor: inherit;
 }

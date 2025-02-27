@@ -1,5 +1,6 @@
 ﻿import { Sequelize } from 'sequelize';
-import config from '../config/config';
+import config from '../config/config.js';
+import mysql2 from "mysql2"
 
 const sequelize = new Sequelize (
     config.development.name,
@@ -8,7 +9,7 @@ const sequelize = new Sequelize (
     {
         host: config.development.host,
         dialect: config.development.dialect,
-        dialectModule: require('mysql2')
+        dialectModule: mysql2
     }
 );
 

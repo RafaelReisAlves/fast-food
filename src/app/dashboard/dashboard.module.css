@@ -1,20 +1,15 @@
 ﻿.conteiner{
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 }
 
-.produto {
+.comanda{
+  margin-bottom: 20px;
+}
+
+.pedido{
   margin: 10px;
-}
-
-.produto input[type=checkbox]{
-  display: none;
-}
-
-.produto input[type=number]{
-  width: 100%;
 }
 
 .button{
