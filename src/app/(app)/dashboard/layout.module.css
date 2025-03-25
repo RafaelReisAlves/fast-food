@@ -7,7 +7,6 @@
 }
 
 .conteinerDashboard{
-  position: relative;
   display: block;
   width: 100%;
   height: 95%;
@@ -17,30 +16,20 @@
   overflow: hidden;
 }
 
-.menuButton{
-  position: absolute;
-  z-index: 2;
-  cursor: pointer;
-  user-select: none;
-}
-
 .navigation{
+  display: flex;
+  justify-content: space-between;
   text-align: center;
   list-style: none;
-  position: absolute;
-  height: 100%;
-  padding: 30px 10px 0;
-  border-radius: 20px 0 0 20px;
-  background-color: #111;
-  transition: .7s;
+  width: 100%;
 }
 
-.navigationOn{
-  left: 0;
-}
-
-.navigationOff{
-  left: -95px;
+.navigation > div {
+  padding: 5px 0;
+  width: 100%;
+  border: #fff solid;
+  border-width: 0 1px 1px 0;
+  cursor: pointer;
 }
 
 .selected {
