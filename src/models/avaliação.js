@@ -8,7 +8,11 @@ const ratingModel = sequelize.define('rating', {
     primaryKey: true,
     autoIncrement: true
   },
-  rating: Sequelize.INTEGER
+  rating: Sequelize.INTEGER,
+  food: Sequelize.INTEGER,
+  time: Sequelize.INTEGER,
+  recomendation: Sequelize.INTEGER,
+  comment: Sequelize.STRING
 });
 
 export default ratingModel

@@ -1,0 +1,29 @@
+﻿.conteiner {
+  margin: 10px 20px 0;
+}
+
+.avarages > div{
+  margin-top: 3px;
+}
+
+.comments {
+  overflow-y: scroll;
+  max-height: 265px;
+}
+
+.comments::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+}
+
+.comments::-webkit-scrollbar-thumb{
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.comment {
+  border-top: 1px solid #aaa;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-left: 5px;
+}

@@ -1,17 +1,20 @@
 ﻿.conteiner{
   height: 100vh;
   display: flex;
-  justify-content: end;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
 }
 
+.conteiner img{
+  width: 300px;
+  height: 300px;
+}
+
 .conteiner div {
-  margin-bottom: 20px;
-  background-color: rgb(17, 68, 17);
+  font-size: xx-large;
   color: #fff;
   padding: 5px 10px;
   border-radius: 5px;
-  width: 200px;
   text-align: center;
 }

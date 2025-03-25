@@ -1,0 +1,33 @@
+﻿.conteiner{
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  background:#000000b0;
+  align-items:center;
+  justify-content:center;
+  height: 100vh;
+  width: 100vw;
+  color: #000;
+}
+
+.fechar {
+  width: fit-content;
+  color: #000;
+  cursor: pointer;
+  padding: 5px 5px 0;
+}
+
+.form > div{
+  margin: 5px 0;
+}
+
+.form p{
+  display: inline;
+  margin-left: 5px;
+}
+
+.form input::-webkit-outer-spin-button, .form input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  margin: 0;
+}

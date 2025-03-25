@@ -1,12 +1,10 @@
-﻿import { command } from "@/models/comanda";
-import { Socket } from "socket.io";
+﻿import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function GET(req) {
-
-  const searchParams = req.nextUrl.searchParams
-  const id = searchParams.get("id")
-
-  command.destroy({where: {id:id} , cascade:true})
-  redirect("/dashboard")
+  const cookieStore = await cookies()
+  cookieStore.delete("autorizado")
+  cookieStore.delete("dashboard")
+  console.log(cookieStore)
+  redirect("/thanks")
 }

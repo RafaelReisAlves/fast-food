@@ -1,26 +1,38 @@
-﻿import { redirect } from "next/navigation"
-import ratingModel from "../../models/avaliação"
+﻿import Codes from "@/models/code";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-export async function GET() {
+export async function GET(req) {
+  const searchParams = req.nextUrl.searchParams
+  const id = searchParams.get("id")
 
-  const data = await ratingModel.findAll()
-  let sum = 0
+  const cookieStore = await cookies()
 
-  data.map(rating =>{
-    sum += rating.rating
+  const codes = await Codes.findAll()
+
+  codes.map((code) => {
+    if(id === code.code && code.connected === false){
+      cookieStore.set("autorizado", true)
+      cookieStore.set("userCode", id)
+      code.update({
+        code: code.code,
+        connected: true
+      })
+      redirect("/")
+    }
   })
-  let response = sum / data.length
-  
-  return Response.json(response.toFixed(1))
-}
 
-export async function POST(req) {
-  const formData = await req.formData()
-  const rating = Number(formData.get('rating'))+1
+  if(id === "4"){
+    cookieStore.set("autorizado", true)
+    cookieStore.set("dashboard", true)
+    redirect("/dashboard")
+  }
   
-  ratingModel.create({
-    rating: rating
-  })
+  if(id === "5"){
+    cookieStore.set("autorizado", true)
+    cookieStore.delete("pedido")
+    redirect("/menu")
+  }
 
-  redirect("/")
+  redirect("/negado")
 }

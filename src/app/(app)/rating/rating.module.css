@@ -1,0 +1,24 @@
+﻿.image{
+  user-select: none;
+  -webkit-user-drag: none;
+  margin: 0 3px;
+  width: 30px;
+  height: 30px;
+}
+
+.comment{
+  width: 100%;
+}
+
+.comment textarea {
+  margin-top: 5px;
+  padding: 2px;
+  width: 100%;
+  min-height: 80px;
+  resize: none;
+  border-radius: 5px;
+}
+
+.comment textarea:focus{
+  outline: 1px hsla(0, 0%, 0%, 0.6) solid;
+}

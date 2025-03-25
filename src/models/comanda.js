@@ -9,8 +9,7 @@ const order = sequelize.define('order', {
     autoIncrement: true
   },
   produto: Sequelize.STRING,
-  quantidade: Sequelize.INTEGER,
-  sabor: Sequelize.STRING
+  tipo: Sequelize.STRING
 });
 
 const command = sequelize.define('command', {
@@ -19,7 +18,14 @@ const command = sequelize.define('command', {
     allowNull: false,
     primaryKey: true,
     autoIncrement: true
-  }
+  },
+  userId: {
+    type: Sequelize.STRING,
+    unique: true
+  },
+  nome: Sequelize.STRING,
+  pronto: Sequelize.BOOLEAN,
+  entregue: Sequelize.BOOLEAN
 });
 
 command.hasMany(order, {
