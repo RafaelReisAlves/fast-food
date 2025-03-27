@@ -3,7 +3,6 @@ import Data from "../data.js"
 
 export async function GET() {
 
-
   const comandas = await command.findAll({include:{
       model: order
     },

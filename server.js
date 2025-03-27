@@ -25,7 +25,6 @@ app.prepare().then(() => {
   });
 
   io.on("connection", (socket) => {
-    console.log(socket.id)
     socket.on("new-order", (pedido) => {
       
       let id = socket.id
@@ -92,7 +91,6 @@ app.prepare().then(() => {
       })
     })
     socket.on("ready", (id) => {
-      console.log(id)
       socket.to(id).emit("ready")
       command.update({pronto: true},{where: {userId: id}})
       .then(() => {
