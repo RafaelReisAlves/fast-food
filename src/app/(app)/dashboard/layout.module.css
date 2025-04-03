@@ -1,5 +1,6 @@
 ﻿.conteiner {
   display: flex;
+  color: white;
   width: 100%;
   height: 100%;
   margin: 0 50px;
@@ -9,7 +10,8 @@
   display: block;
   width: 100%;
   height: 95%;
-  background-color: #fff;
+  background-color: #222;
+  border: #fff 1px solid;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -25,7 +27,7 @@
 .navigation > div {
   padding: 5px 0;
   width: 100%;
-  border: #034d0a dotted;
+  border: #fff solid;
   border-width: 0 1px 1px 0;
   cursor: pointer;
 }

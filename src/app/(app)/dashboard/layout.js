@@ -13,6 +13,8 @@ export default function RootLayout({ children }) {
   const [avalicao, setAvalicao] = useState(false)
   const [estoque, setEstoque] = useState(false)
 
+  const [menu, setMenu] = useState(false)
+
   useEffect(() => {
     console.log(pathName)
     if(pathName === "/dashboard"){
@@ -38,10 +40,13 @@ export default function RootLayout({ children }) {
       <div className={styles.conteinerDashboard}>
         <nav>
           <ul className={styles.navigation}>
+            <div style={pedidos ? {backgroundColor: "#333"} : {backgroundColor:"#222"}}>
               <Link href={"/dashboard"}><li>Pedidos</li></Link>
             </div>
+            <div style={estoque ? {backgroundColor: "#333"} : {backgroundColor:"#222"}}>
               <Link href={"/dashboard/estoque"}><li>Estoque</li></Link>
             </div>
+            <div style={avalicao ? {backgroundColor: "#333"} : {backgroundColor:"#222"}}>
               <Link href={"/dashboard/avaliacoes"}><li>Avaliações</li></Link>
             </div>
           </ul>

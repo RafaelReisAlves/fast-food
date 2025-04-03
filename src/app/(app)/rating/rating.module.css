@@ -6,13 +6,8 @@
   height: 30px;
 }
 
-.desc{
-  opacity: 0.6;
-  font-size: small;
-}
-
 .comment{
-  width: 90%;
+  width: 100%;
 }
 
 .comment textarea {
