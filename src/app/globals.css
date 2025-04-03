@@ -26,17 +26,17 @@ a, button {
   font-weight: normal;
  }
 
- .font{
+ .font {
   font-family: "Quicksand";
  }
  
  
-.arrowDown{
+.arrowDown {
   transform: rotate(90deg);
   transition: 1s;
 }
 
-.arrowUp{
+.arrowUp {
   transform: rotate(-90deg);
   transition: .8s;
 }
