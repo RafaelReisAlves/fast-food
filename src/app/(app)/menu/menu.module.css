@@ -1,7 +1,6 @@
 ﻿.card {
   opacity: 1;
   animation: card 3s;
-  font-family: "Quicksand";
 }
 
 @keyframes card {
@@ -17,8 +16,8 @@
 }
 
 .nome{
-  width: 100%;
-  margin: 2px auto;
+  width: inherit;
+  margin: 2px 10px;
 }
 
 .nome input{
@@ -29,8 +28,6 @@
   outline: 1px solid #888;
   background-color: #032A0D;
   color: #ffffff;
-  font-family: "Quicksand";
-  font-weight: bold;
 }
 
 .nome input:focus{
@@ -73,9 +70,4 @@
 
 .descricao {
   color: hsla(100, 100%, 0%, 0.6);
-}
-
-.dignome {
-  font-weight: bold;
-  letter-spacing: 1px;
 }
