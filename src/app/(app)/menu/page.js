@@ -107,7 +107,7 @@ export default function Menu() {
       <Card>
         <form onSubmit={handleSubmit}>
           <label>
-            Digite seu Nome: 
+            DIGITE SEU NOME:
             <div className={styles.nome}>
               <input
                 type="text"
@@ -134,10 +134,12 @@ export default function Menu() {
                     onChange={() => produto.setvalue(produto.nome)}
                   />
                   <label htmlFor={produto.nome}>
-                    <div className={`${styles.svg} ${produto.value !== produto.nome ? styles.svgOn : styles.svgOff}`}>
-                      <SVG/>
+                    <div className={styles.pNome}>
+                      <div className={`${styles.svg} ${produto.value !== produto.nome ? styles.svgOn : styles.svgOff}`}>
+                        <SVG/>
+                      </div>
+                      <p>{produto.nome}</p>
                     </div>
-                    <p>{produto.nome}</p>
                     <div className={styles.descricao}>{produto.descricao}</div>
                   </label>
                 </div>

@@ -69,17 +69,18 @@ app.prepare().then(() => {
 
       // diminuir estoque
       pedido.newOrders.map(newOrder => {
-        
-        stock.findOne({where: {produto: newOrder.produto}})
-        .then(produto => {
-          if(produto.quantidade > 0 ){
-            let novaQuantidade = produto.quantidade-1
-            if(novaQuantidade <= limite){
-              io.emit("alert", produto.produto)
+        if(newOrder.produto){
+          stock.findOne({where: {produto: newOrder.produto}})
+          .then(produto => {
+            if(produto.quantidade > 0 ){
+              let novaQuantidade = produto.quantidade-1
+              if(novaQuantidade <= limite){
+                io.emit("alert", produto.produto)
+              }
+              produto.update({quantidade: novaQuantidade})
             }
-            produto.update({quantidade: novaQuantidade})
-          }
-        })
+          })
+        }
         // prototipo do estoque de embalagens
         // newOrder.embalagens.map((embalagem) => {
         //   stock.findOne({where:{produto: embalagem}})

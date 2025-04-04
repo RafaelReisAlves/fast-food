@@ -49,16 +49,10 @@ export default function Dashboard() {
   },[cozinha, retirada])
 
   socket.once("cozinha-data", (data) => {
-    console.log(data)
-    setTimeout(() => {
-      setCozinha(data)
-    }, 1000)
+    setCozinha(data)
   })
   socket.once("retirada-data", (data) => {
-    console.log(data)
-    setTimeout(() => {
-      setRetirada(data)
-    }, 1000)
+    setRetirada(data)
   })
   
   return(

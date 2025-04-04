@@ -24,5 +24,5 @@ export async function POST() {
       connected: false
     })
   })
-  return "success"
+  return Response("success")
 }

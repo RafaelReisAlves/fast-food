@@ -1,5 +1,5 @@
 ﻿import stock from "@/models/estoque";
-import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export async function POST(req) {
 
@@ -14,5 +14,5 @@ export async function POST(req) {
       tipo: tipo,
     }
   stock.create(newProduto)
-  redirect("/dashboard/estoque")
+  revalidatePath("/dashboard/estoque", "page")
 }

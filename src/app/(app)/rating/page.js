@@ -42,7 +42,7 @@ export default function Rating() {
       name: "recomendation",
       value: recomendation,
       setvalue: setRecomendation,
-      pergunta: "Você recomendaria nosso fast food para alguém?",
+      pergunta: "Você recomendaria o Amburana para alguém?",
       descricao: "(considere 1 para nunca e 5 para com certeza)"
     },
     {
@@ -187,15 +187,15 @@ export default function Rating() {
   },[imagesArr])
 
   return(
-    <form action={"/api/avaliacao"} method="post">
-      <Card>
+    <Card>
+      <form action={"/api/avaliacao"} method="post">
         <div>
           {
             questions.map((question, questionKey) => (
               <div key={questionKey}>
                 <div>
                   <p>{question.pergunta}</p>
-                  <p style={{opacity:0.6}}>{question.descricao}</p>
+                  <p className={styles.desc}>{question.descricao}</p>
                 </div>
                 <div style={{display: "flex", justifyContent: "center"}}>
                   {
@@ -232,7 +232,7 @@ export default function Rating() {
           }
         </div>
         <Button disabled={disabled} text={"Enviar"} />
-      </Card>
-    </form>
+      </form>
+    </Card>
   )
 }

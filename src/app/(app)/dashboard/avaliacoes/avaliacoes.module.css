@@ -12,12 +12,12 @@
 }
 
 .comments::-webkit-scrollbar {
-  background-color: transparent;
+  background-color: #aaa;
   width: 10px;
 }
 
 .comments::-webkit-scrollbar-thumb{
-  background-color: #fff;
+  background-color: #000;
   border-radius: 20px;
 }
 
