@@ -17,7 +17,7 @@ export default function Home() {
       </div>
       <p>Inspirado na árvore nativa brasileira, conhecida por sua resistência e aroma inconfundível, o Amburana traz o melhor da culinária nacional em formato fastfood, com pratos que representam a diversidade de sabores e a riqueza da nossa terra. A proposta é oferecer uma experiência de refeições rápidas, mas com a autenticidade e o frescor dos ingredientes brasileiros.</p>
       <Link href="/menu">
-        <div className={styles.fpedido}>FAÇA SEU PEDIDO</div>
+        <div className={styles.fpedido}>FAZER PEDIDO</div>
       </Link>
     </div>
   )
