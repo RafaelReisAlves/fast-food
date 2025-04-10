@@ -106,7 +106,7 @@ export default function Menu() {
     <div className={styles.card}>
       <Card>
         <form onSubmit={handleSubmit}>
-          <label>
+          <label className={styles.dignome}>
             DIGITE SEU NOME:
             <div className={styles.nome}>
               <input
