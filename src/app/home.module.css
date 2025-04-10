@@ -1,54 +1,46 @@
-﻿@font-face {
-  font-family: 'FonteLogo';
-  src: url("./fonts/Quicksand.ttf");
-}
-
-.conteiner{
+﻿.conteiner{
   height: 100vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  font-family: 'FonteLogo';
+  font-family: "Quicksand";
 }
 
 .conteiner img {
   width: 200px;
   height: 200px;
+  margin-top: 10px;
 }
 
 .conteiner div {
+  font-size: 32px;
   color: #fff;
+  padding: 5px 10px;
   border-radius: 5px;
   text-align: center;
-}
-
-.text {
-  margin-left: 20px;
-  font-size: 40px;
 }
 
 .conteiner p {
   color: #ffffff;
   text-align: center;
-  padding: 0 70px 0 70px;
-  max-width: 800px;
+  width: 1200px;
 }
 
-.fpedido {
+div.fpedido {
   border: solid 1px;
-  border-radius: 18px !important;
+  border-radius: 18px;
   background-color: #ffffff;
-  color: #032A0D !important;
-  padding: 6px 25px 6px 25px !important;
+  color: #032A0D;
+  padding: 6px 25px 6px 25px;
   transition: color 1s, letter-spacing 1s;
   font-weight: bold;
   letter-spacing: 1px;
 }
 
-.fpedido:hover {
+div.fpedido:hover {
   background-color: #032A0D;
-  color: #ffffff !important;
+  color: #ffffff;
   cursor: pointer;
   letter-spacing: 2px;
 }

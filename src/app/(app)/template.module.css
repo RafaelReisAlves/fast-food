@@ -1,9 +1,9 @@
 ﻿.conteiner{
-  position: fixed;
+  position: relative;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
-  width: 100vw; 
+  width: 100vw;
   margin-top: 10px;
   flex-direction: column;
   color: #fff;
@@ -27,32 +27,33 @@
   justify-content: center;
   align-items: flex-start;
   height: 100vh;
-  margin-top: 90px;
+  margin-top: 20px;
 }
 
 @keyframes Logo {
   from {
     position: absolute;
-    top: 40%;
+    top: calc(45% - 100px);
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: xx-large;
+    font-size: 32px;
   }
-  to{
+  to {
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+    font-size: 16px;
   }
 }
 
 @keyframes logo {
   from {
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
     padding-bottom: 10px;
   }
-  
+
   to {
     height: 50px;
     width: 50px;
