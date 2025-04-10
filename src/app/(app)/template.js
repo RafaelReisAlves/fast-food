@@ -6,7 +6,7 @@ export default function Template({children}) {
   return (
     <>
       <div className={styles.conteiner}>
-        <Image src="/logo.png" alt="Logo Amburana" width={300} height={300} priority/>
+        <Image src="/logo.png" alt="Logo Amburana" width={200} height={200} priority/>
         <div className="font">AMBURANA</div>
       </div>
       <div className={styles.conteinerChildren}>

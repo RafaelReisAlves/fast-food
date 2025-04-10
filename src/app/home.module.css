@@ -1,15 +1,10 @@
-﻿@font-face {
-  font-family: 'FonteLogo';
-  src: url("./fonts/Quicksand.ttf");
-}
-
-.conteiner{
+﻿.conteiner{
   height: 100vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  font-family: 'FonteLogo';
+  font-family: "Quicksand";
 }
 
 .conteiner img {
@@ -19,7 +14,7 @@
 }
 
 .conteiner div {
-  font-size: xx-large;
+  font-size: 32px;
   color: #fff;
   padding: 5px 10px;
   border-radius: 5px;
@@ -29,7 +24,7 @@
 .conteiner p {
   color: #ffffff;
   text-align: center;
-  padding: 0 70px 0 70px;
+  width: 1200px;
 }
 
 div.fpedido {
