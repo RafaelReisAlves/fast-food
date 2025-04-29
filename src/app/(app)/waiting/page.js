@@ -21,14 +21,16 @@ export default function Waiting() {
   })
 
   return(
-    <Card>
-      {
-        ready ? (
-          <h2>O pedido está pronto</h2>
-        ) : (
-          <h2>O pedido está sendo feito</h2>
-        )
-      }
+    <div>
+      <Card>
+        {
+          ready ? (
+            <h2>O pedido está pronto</h2>
+          ) : (
+            <h2>SEU PEDIDO ESTÁ SENDO PREPARADO</h2>
+          )
+        }
     </Card>
+    </div>
   )
 }
