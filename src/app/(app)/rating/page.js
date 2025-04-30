@@ -22,32 +22,32 @@ export default function Rating() {
       value: rating,
       setvalue: setRating,
       pergunta: "Como você avalia sua experiência geral?",
-      descricao: "(considere 1 para muito ruim e 5 para excelente)",
+      descricao: "(Considere 1 para muito ruim e 5 para excelente)",
     },
     {
       name: "food",
       value: food,
       setvalue: setFood,
       pergunta: "Como você avalia a qualidade da comida?",
-      descricao: "(considere 1 para muito ruim e 5 para excelente)"
+      descricao: "(Considere 1 para muito ruim e 5 para excelente)"
     },
     {
       name: "time",
       value: time,
       setvalue: setTime,
       pergunta: "Como você avalia o tempo de atendimento?",
-      descricao: "(considere 1 para muito demorado e 5 para rapido)",
+      descricao: "(Considere 1 para muito demorado e 5 para rapido)",
     },
     {
       name: "recomendation",
       value: recomendation,
       setvalue: setRecomendation,
       pergunta: "Você recomendaria nosso fast food para alguém?",
-      descricao: "(considere 1 para nunca e 5 para com certeza)"
+      descricao: "(Considere 1 para nunca e 5 para com certeza)"
     },
     {
       name: "comment",
-      pergunta: "Deixe aqui suas criticas, elogios ou sugestões:",
+      pergunta: "Deixe aqui suas críticas, elogios ou sugestões:",
       descricao: "(Opcional)",
       value: comment
     }
@@ -57,23 +57,23 @@ export default function Rating() {
     {
       Images: [
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 1
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 2
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 3
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 4
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 5
         },
       ]
@@ -81,23 +81,23 @@ export default function Rating() {
     {
       Images: [
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 1
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 2
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 3
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 4
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 5
         },
       ]
@@ -105,23 +105,23 @@ export default function Rating() {
     {
       Images: [
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 1
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 2
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 3
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 4
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 5
         },
       ]
@@ -129,23 +129,23 @@ export default function Rating() {
     {
       Images: [
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 1
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 2
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 3
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 4
         },
         {
-          image: "/starVoid.png",
+          image: "/logo-void.png",
           id: 5
         },
       ]
@@ -158,12 +158,12 @@ export default function Rating() {
       if(rating > key){
         return {
           ...image,
-          image: "/starFull.png"
+          image: "/logo-full.png"
         }
       }else{
         return {
           ...image,
-          image: "/starVoid.png"
+          image: "/logo-void.png"
         }
         
       }
@@ -188,51 +188,52 @@ export default function Rating() {
 
   return(
     <form action={"/api/avaliacao"} method="post">
-      <Card>
+      <Card className={styles.card}>
         <div>
+          <h1>DEIXE SUA AVALIAÇÃO</h1>
           {
             questions.map((question, questionKey) => (
-              <div key={questionKey}>
-                <div>
-                  <p>{question.pergunta}</p>
-                  <p style={{opacity:0.6}}>{question.descricao}</p>
-                </div>
-                <div style={{display: "flex", justifyContent: "center"}}>
-                  {
-                    imagesArr[questionKey] ? (
-                      imagesArr[questionKey].Images.map((image, imageKey) => (
-                        <div key={imageKey}>
-                            <Image
-                              src={image.image}
-                              width={500}
-                              height={500}
-                              alt="estrela para avaliar nosso serviço"
-                              key={imageKey}
-                              className={styles.image}
-                              onClick={() => {
-                                updateImages(questionKey, image.id)
-                                question.setvalue(image.id)
-                              }}
-                            />
-                        </div>
-                      ))
-                    ) : (
-                      <div className={styles.comment}>
+                <div key={questionKey}>
+                  <div>
+                    <p className={styles.pergunta}>{question.pergunta}</p>
+                    <p className={styles.descricao}>{question.descricao}</p>
+                  </div>
+                  <div style={{display: "flex", justifyContent: "center"}}>
+                    {
+                      imagesArr[questionKey] ? (
+                          imagesArr[questionKey].Images.map((image, imageKey) => (
+                              <div key={imageKey}>
+                                <Image
+                                    src={image.image}
+                                    width={500}
+                                    height={500}
+                                    alt="estrela para avaliar nosso serviço"
+                                    key={imageKey}
+                                    className={styles.image}
+                                    onClick={() => {
+                                      updateImages(questionKey, image.id)
+                                      question.setvalue(image.id)
+                                    }}
+                                />
+                              </div>
+                          ))
+                      ) : (
+                          <div className={styles.comment}>
                         <textarea
-                          onChange={(e) => setComment(e.target.value)}
-                          value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                            value={comment}
                         />
-                      </div>
-                    )
-                  }
+                          </div>
+                      )
+                    }
+                  </div>
+                  <input type="hidden" value={question.value} name={question.name}/>
                 </div>
-                <input type="hidden" value={question.value} name={question.name}/>
-              </div>
             ))
           }
         </div>
-        <Button disabled={disabled} text={"Enviar"} />
       </Card>
+      <Button disabled={disabled} text={"ENVIAR"} />
     </form>
   )
 }

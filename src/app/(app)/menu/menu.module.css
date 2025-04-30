@@ -1,6 +1,7 @@
 ﻿.card {
   opacity: 1;
   animation: card 3s;
+  width: 365px;
   font-family: "Quicksand";
 }
 
@@ -31,20 +32,68 @@
   color: #ffffff;
   font-family: "Quicksand";
   font-weight: bold;
-}
-
-.nome input:focus{
-  outline: 2px solid #888;
+  margin: 5px 0 5px 0;
 }
 
 .tipo {
-  border-top: 1px dashed #032A0D;
-  margin-top: 5px;
+  margin: 5px 0 -10px 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.tipoBebida {
+  margin: 10px 0 5px 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.salgadoContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.imagemSalgado {
+  width: 60px;
+  height: 55px;
+  border-radius: 9px;
+  margin-right: 10px;
 }
 
 .produto {
-  margin: 5px 10px 0;
-  width: 280px
+  margin: 5px 10px -10px 0;
+  width: 280px;
+}
+
+.produto p {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.listaProdutos {
+  display: flex;
+  flex-direction: column;
+}
+
+.containerImagemProdutos {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.divisor {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  margin: 10px 10px;
+}
+
+.espacoAntes {
+  margin-top: 20px;
 }
 
 .produto input[type=radio] {
@@ -56,10 +105,11 @@
   width: 18px;
   height: 18px;
   rotate: 20deg;
+  vertical-align: middle;
 }
 
 .svgOn svg{
-  fill: gray;
+  fill: #999999;
 }
 
 .svgOff svg{
@@ -72,7 +122,9 @@
 }
 
 .descricao {
-  color: hsla(100, 100%, 0%, 0.6);
+  color: hsla(100, 100%, 0%, 0.8);
+  margin: 4px 0 10px 0;
+  font-size: 14px;
 }
 
 .dignome {

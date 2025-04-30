@@ -1,9 +1,36 @@
-﻿.image{
+﻿.card {
+  font-family: "Quicksand";
+  width: 100%;
+  padding: 15px !important;
+}
+
+.card h1 {
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 20px;
+  margin: 10px 0 15px 0;
+}
+
+.pergunta {
+  margin-bottom: 3px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.descricao {
+  opacity: 0.8;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.image{
   user-select: none;
   -webkit-user-drag: none;
-  margin: 0 3px;
+  margin: 0 3px 15px 3px;
   width: 30px;
   height: 30px;
+  rotate: 20deg;
 }
 
 .comment{
@@ -12,11 +39,15 @@
 
 .comment textarea {
   margin-top: 5px;
-  padding: 2px;
+  padding: 4px 6px;
   width: 100%;
   min-height: 80px;
   resize: none;
   border-radius: 5px;
+  border: 2px solid #032A0D;
+  font-family: "Quicksand";
+  color: #032A0D;
+  font-weight: bold;
 }
 
 .comment textarea:focus{

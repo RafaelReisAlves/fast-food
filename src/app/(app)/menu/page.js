@@ -1,15 +1,15 @@
 ﻿"use client"
 
+import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import styles from "./menu.module.css"
 import { socket } from "@/socket"
 import Card from "@/app/components/card/card"
 import Button from "@/app/components/button/button"
-import Cookies from "js-cookie"
-import { redirect } from "next/navigation"
 import SVG from "@/app/components/svgLogo/svg"
 
 export default function Menu() {
+  const router = useRouter()
 
   const [salgado, setSalgado] = useState()
   const [doce, setdoce] = useState()
@@ -22,28 +22,28 @@ export default function Menu() {
     {
       nome: "Ambuloco",
       produto: "Salgado",
-      descricao: "Bolinho de milho assado com carne maluca de banana",
+      descricao: "Bolinho de milho assado com carne maluca de banana.",
       value: salgado,
       setvalue: setSalgado
     },
     {
-      nome: "Bananitos",
+      nome: "Mandioquitos",
       produto: "Salgado",
-      descricao: "Chips crocante de banana (acompanhada de maionese de tucupi e ketchup de goiaba",
+      descricao: "Chips crocante de mandioca. Acompanha maionese de tucupi e ketchup de goiaba.",
       value: salgado,
       setvalue: setSalgado
     },
     {
-      nome: "Bolo de coco molhado felpudo",
+      nome: "Ambucoco",
       produto: "Doce",
-      descricao: "Bolo molha envolto de raspas de coco",
+      descricao: "Bolo molhado envolto de raspas de coco.",
       value: doce,
       setvalue: setdoce
     },
     {
-      nome: "Bolo Cuca de Banana",
+      nome: "Ambucuca",
       produto: "Doce",
-      descricao: "Bolo macio, banana caramelizada e crocante amanteigado",
+      descricao: "Bolo macio de banana caramelizada e crocante amanteigado.",
       value: doce,
       setvalue: setdoce
     },
@@ -71,82 +71,196 @@ export default function Menu() {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    
-    const newOrders = [
-      {
-        produto: salgado,
-        tipo: "salgado"
-      },
-      {
-        produto: doce,
-        tipo: "doce"
-      },
-      {
-        produto: bebida,
-        tipo: "bebida"
-      }
-    ]
 
-    const pedido = {newOrders: newOrders, nome: nome}
-    Cookies.remove("autorizado")
-    const pedidoFeito = Cookies.get("pedido")
-    if(!pedidoFeito){
-      Cookies.set("pedido", true)
+    const pedidoFeito = localStorage.getItem("pedido")
+
+    const pedido = {
+      nome,
+      salgado,
+      doce,
+      bebida
+    }
+
+    if (!pedidoFeito) {
+      localStorage.setItem("pedido", true)
       socket.emit("new-order", pedido)
-      redirect("/waiting")
+      window.location.href = "/waiting"
     } else {
       const xhr = new XMLHttpRequest()
       xhr.open("POST", "/api/pedido")
       xhr.send()
-      redirect("/negado")
+      window.location.href = "/negado"
     }
   }
 
   return(
-    <div className={styles.card}>
-      <Card>
-        <form onSubmit={handleSubmit}>
-          <label className={styles.dignome}>
-            DIGITE SEU NOME:
-            <div className={styles.nome}>
-              <input
-                type="text"
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-              />
-            </div>
-          </label>
-          {
-            produtos.map((produto, key) => (
-              <div key={key}>
-                {
-                  key % 2 === 0 && (
-                    <div className={styles.tipo}>
-                      {produto.produto}s: 
-                    </div>
-                  )
-                }
-                <div className={styles.produto}>
-                  <input
-                    type="radio"
-                    name={produto.produto}
-                    id={produto.nome}
-                    onChange={() => produto.setvalue(produto.nome)}
-                  />
-                  <label htmlFor={produto.nome}>
-                    <div className={`${styles.svg} ${produto.value !== produto.nome ? styles.svgOn : styles.svgOff}`}>
-                      <SVG/>
-                    </div>
-                    <p>{produto.nome}</p>
-                    <div className={styles.descricao}>{produto.descricao}</div>
-                  </label>
-                </div>
+      <div className={styles.card}>
+        <Card>
+          <form onSubmit={handleSubmit}>
+            <label className={styles.dignome}>
+              DIGITE SEU NOME:
+              <div className={styles.nome}>
+                <input
+                    type="text"
+                    value={nome}
+                    onChange={(e) => setNome(e.target.value)}
+                />
               </div>
-            ))
-          }
-          <Button disabled={disabled} text={"Fazer pedido"} />
-        </form>
-      </Card>
-    </div>
+            </label>
+            {
+              produtos.map((produto, key) => (
+                  <div key={key}>
+                    {key !== 0 && produtos[key - 1].produto !== produto.produto && (
+                        <>
+                          <hr className={styles.divisor}/>
+                          <div className={produto.produto === "Bebida" ? styles.tipoBebida : styles.tipo}>
+                            {produto.produto}s
+                          </div>
+                        </>
+                    )}
+
+                    {key === 0 && (
+                        <div className={produto.produto === "Bebida" ? styles.tipoBebida : styles.tipo}>
+                          {produto.produto}s
+                        </div>
+                    )}
+
+                    {produto.nome === "Ambuloco" && (
+                        <div className={styles.salgadoContainer}>
+                          <div className={styles.containerImagemProdutos}>
+                            <img
+                                src="/ambuloco.jpg"
+                                alt="Imagem Ambuloco"
+                                className={styles.imagemSalgado}
+                            />
+                          </div>
+                          <div className={styles.produto}>
+                            <input
+                                type="radio"
+                                name={produto.produto}
+                                id={produto.nome}
+                                onChange={() => produto.setvalue(produto.nome)}
+                            />
+                            <label htmlFor={produto.nome}>
+                              <div
+                                  className={`${styles.svg} ${produto.value !== produto.nome ? styles.svgOn : styles.svgOff}`}>
+                                <SVG/>
+                              </div>
+                              <p>{produto.nome}</p>
+                              <div className={styles.descricao}>{produto.descricao}</div>
+                            </label>
+                          </div>
+                        </div>
+                    )}
+                    {produto.nome === "Mandioquitos" && (
+                        <div className={styles.salgadoContainer}>
+                          <div className={styles.containerImagemProdutos}>
+                            <img
+                                src="/mandioquitos.jpg"
+                                alt="Imagem Mandioquitos"
+                                className={styles.imagemSalgado}
+                            />
+                          </div>
+                          <div className={styles.produto}>
+                            <input
+                                type="radio"
+                                name={produto.produto}
+                                id={produto.nome}
+                                onChange={() => produto.setvalue(produto.nome)}
+                            />
+                            <label htmlFor={produto.nome}>
+                              <div
+                                  className={`${styles.svg} ${produto.value !== produto.nome ? styles.svgOn : styles.svgOff}`}>
+                                <SVG/>
+                              </div>
+                              <p>{produto.nome}</p>
+                              <div className={styles.descricao}>{produto.descricao}</div>
+                            </label>
+                          </div>
+                        </div>
+                    )}
+                    {produto.nome === "Ambucoco" && produto.produto === "Doce" && (
+                        <div className={styles.salgadoContainer}>
+                          <div className={styles.containerImagemProdutos}>
+                            <img
+                                src="/bolo-coco.jpg"
+                                alt="Imagem de Bolo de Coco"
+                                className={styles.imagemSalgado}
+                            />
+                          </div>
+                          <div className={styles.produto}>
+                            <input
+                                type="radio"
+                                name={produto.produto}
+                                id={produto.nome}
+                                onChange={() => produto.setvalue(produto.nome)}
+                            />
+                            <label htmlFor={produto.nome}>
+                              <div
+                                  className={`${styles.svg} ${produto.value !== produto.nome ? styles.svgOn : styles.svgOff}`}>
+                                <SVG/>
+                              </div>
+                              <p>{produto.nome}</p>
+                              <div className={styles.descricao}>{produto.descricao}</div>
+                            </label>
+                          </div>
+                        </div>
+                    )}
+                    {produto.nome === "Ambucuca" && (
+                        <div className={styles.salgadoContainer}>
+                          <div className={styles.containerImagemProdutos}>
+                            <img
+                                src="/cuca.jpg"
+                                alt="Imagem de Bolo Cuca de Banana"
+                                className={styles.imagemSalgado}
+                            />
+                          </div>
+                          <div className={styles.produto}>
+                            <input
+                                type="radio"
+                                name={produto.produto}
+                                id={produto.nome}
+                                onChange={() => produto.setvalue(produto.nome)}
+                            />
+                            <label htmlFor={produto.nome}>
+                              <div
+                                  className={`${styles.svg} ${produto.value !== produto.nome ? styles.svgOn : styles.svgOff}`}>
+                                <SVG/>
+                              </div>
+                              <p>{produto.nome}</p>
+                              <div className={styles.descricao}>{produto.descricao}</div>
+                            </label>
+                          </div>
+                        </div>
+                    )}
+                    {produto.nome !== "Ambuloco" && produto.nome !== "Mandioquitos" && produto.nome !== "Ambucoco" && produto.nome !== "Ambucuca" && (
+                        <div className={`${styles.produto} ${produto.nome === "Suco" ? styles.espacoAntes : ""}`}>
+                          <input
+                              type="radio"
+                              name={produto.produto}
+                              id={produto.nome}
+                              onChange={() => produto.setvalue(produto.nome)}
+                          />
+                          <label htmlFor={produto.nome}>
+                            <div
+                                className={`${styles.svg} ${produto.value !== produto.nome ? styles.svgOn : styles.svgOff}`}>
+                              <SVG/>
+                            </div>
+                            <p>{produto.nome}</p>
+                            <div className={styles.descricao}>{produto.descricao}</div>
+                          </label>
+                        </div>
+                    )}
+                  </div>
+              ))
+            }
+          </form>
+        </Card>
+        <Button
+            onClick={(e) => handleSubmit(e)}
+            disabled={disabled}
+            text={"FAZER PEDIDO"}
+        />
+      </div>
   )
 }
